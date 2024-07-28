@@ -13,9 +13,12 @@ function validateForm() {
     // format is the same in creating IPO Structure
     const form = document.forms["contact_form"];
     const validationParagraph = document.getElementsByClassName("validation-paragraph");
+    const validationEmail = document.getElementById("validation-email");
     const fieldsToValidate = ["first_name", "last_name", "email_address", "message_box"];
+    const emailAddressToValidate = ["email_address"];
 
     let isFormValid = true; // Tracks overall form validity
+    let isEmailFieldEmpty = true;
 
     for (let i = 0; i < fieldsToValidate.length; i++) {
         const fieldName = fieldsToValidate[i];
@@ -28,6 +31,24 @@ function validateForm() {
             validationParagraph[i].innerHTML = "";
         }
     }
+
+    const emailValue = form[emailAddressToValidate].value.trim();
+
+    if(emailValue === "") {
+        isEmailFieldEmpty = true;
+    } else {
+        isEmailFieldEmpty = false;
+    }
+    console.log(isEmailFieldEmpty);
+
+    if (!emailAddressToValidate.includes('@')) { //if email address input !include @
+        if(isEmailFieldEmpty === true) {    
+            validationEmail.innerHTML = ""
+        } else {
+            validationEmail.innerHTML = "Please enter a valid email address";
+        }
+    }
+
     if (!isFormValid) { // if tracker is false, return value will be false
         return false; // form will not submit
 
