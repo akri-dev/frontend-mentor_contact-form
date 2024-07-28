@@ -1,0 +1,43 @@
+/* Variable Fonts (modern browsers) */
+@font-face {
+    font-family: 'Karla';
+    src: url('../fonts/Karla-VariableFont_wght.ttf') format('truetype-variations');
+    font-weight: 400 700;  /* Range from ExtraLight (400) to ExtraBold (7   00) */
+    font-style: normal italic;
+}
+
+/* Fallback for Older Browsers (including Karla Italic) */
+@font-face {
+    font-family: 'Karla';
+    src: url('../fonts/static/Karla-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('../fonts/Karla-Italic-VariableFont_wght.ttf') format('truetype-variations');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Karla';
+    src: url('../fonts/static/Karla-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body,
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+h2,
+h3,
+p {
+    margin-bottom: 1em
+}
