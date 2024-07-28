@@ -19,35 +19,31 @@
 
   <h1>Contact Us</h1>
 
-  <label for="first-name">First Name <span class="required-asterisk">*</span></label>
-  <input type="text" id="first-name" required>
-  This field is required
-
-  <label for="last-name">Last Name <span class="required-asterisk">*</span></label>
-  <input type="text" id="last-name" required>
-  This field is required
-
-  <label for="email-address">Email Address <span class="required-asterisk">*</span></label>
-  <input type="text" id="email-address" required>
-  Please enter a valid email address
-  This field is required
-
-  <label>Query Type</label>
-  <input type="radio" name="query_type" id="general-inquiry">
-  <label for="general-inquiry">General Inquiry</label>
-  <input type="radio" name="query_type" id="support-request">
-  <label for="support-request">Support Request</label>
-  General Enquiry
-  Support Request
-  Please select a query type
-
-  <label for="message-box">Message</label>
-  This field is required
-
-  <label for="consent-checkbox">I consent to being contacted by the team</label>
-  To submit this form, please consent to being contacted
-
-  <button type="submit" onclick="successMessage()">Submit</button>
+  <form action="#">
+    <label for="first-name">First Name <span class="required-asterisk">*</span></label>
+    <input type="text" id="first-name" required>
+    This field is required
+    <label for="last-name">Last Name <span class="required-asterisk">*</span></label>
+    <input type="text" id="last-name" required>
+    This field is required
+    <label for="email-address">Email Address <span class="required-asterisk">*</span></label>
+    <input type="text" id="email-address" required>
+    Please enter a valid email address
+    This field is required
+    <label>Query Type</label>
+    <input type="radio" name="query_type" id="general-inquiry">
+    <label for="general-inquiry">General Inquiry</label>
+    <input type="radio" name="query_type" id="support-request">
+    <label for="support-request">Support Request</label>
+    General Enquiry
+    Support Request
+    Please select a query type
+    <label for="message-box">Message</label>
+    This field is required
+    <label for="consent-checkbox">I consent to being contacted by the team</label>
+    To submit this form, please consent to being contacted
+    <button type="submit" onclick="successMessage()">Submit</button>
+  </form>
 
   <label for="">Message Sent!</label>
   Thanks for completing the form. We'll be in touch soon!
