@@ -19,15 +19,23 @@
 
   <h1>Contact Us</h1>
 
-  <form action="#">
-    <label for="first-name">First Name <span class="required-asterisk">*</span></label>
-    <input type="text" id="first-name" required>
-    This field is required
-    <label for="last-name">Last Name <span class="required-asterisk">*</span></label>
-    <input type="text" id="last-name" required>
-    This field is required
-    <label for="email-address">Email Address <span class="required-asterisk">*</span></label>
-    <input type="text" id="email-address" required>
+  <!-- return keyword, must be true to allow form submission if all fields are filled -->
+  <form action="#" id="contact-form" name="contact_form" onsubmit="return validateForm()" required>
+    <div class="two-columns">
+      <label for="first-name">First Name <span class="required-asterisk">*</span></label>
+      <input type="text" id="first-name" name="first_name">
+      <p class="validation-paragraph"></p>
+    </div>
+    <div class="two-columns">
+      <label for="last-name">Last Name <span class="required-asterisk">*</span></label>
+      <input type="text" id="last-name" name="last_name">
+      <p class="validation-paragraph"></p>
+    </div>
+    <div>
+      <label for="email-address">Email Address <span class="required-asterisk">*</span></label>
+      <input type="email" id="email-address" name="email_address">
+      <p class="validation-paragraph"></p>
+    </div>
     Please enter a valid email address
     This field is required
     <label>Query Type</label>
@@ -39,10 +47,11 @@
     Support Request
     Please select a query type
     <label for="message-box">Message</label>
-    This field is required
+    <textarea name="message_box" id="message-box"></textarea>
+    <p class="validation-paragraph"></p>
     <label for="consent-checkbox">I consent to being contacted by the team</label>
     To submit this form, please consent to being contacted
-    <button type="submit" onclick="successMessage()">Submit</button>
+    <button type="submit">Submit</button>
   </form>
 
   <label for="">Message Sent!</label>
@@ -52,6 +61,6 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
     Coded by <a href="#">Your Name Here</a>.
   </div>
-  <script src="main.js"></script>
+  <script src="./assets/js/functions.js"></script>
 </body>
 </html>
