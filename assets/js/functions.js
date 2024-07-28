@@ -15,10 +15,24 @@ function validateForm() {
     const validationParagraph = document.getElementsByClassName("validation-paragraph");
     const fieldsToValidate = ["first_name", "last_name", "email_address", "message_box"];
 
-    for (let i = 0; i < fieldsToValidate[i].length; i++) {
-        const fieldName = fieldsToValidate[i];
-        const fieldValue = fieldsToValidate[i].value;
-        
-    }
+    let isFormValid = true; // Tracks overall form validity
 
+    for (let i = 0; i < fieldsToValidate.length; i++) {
+        const fieldName = fieldsToValidate[i];
+        const fieldValue = form[fieldName].value.trim();
+        
+        if (fieldValue === "") {
+            validationParagraph[i].innerHTML = "This field is required";
+            isFormValid = false; //changes the tracker so that form will not submit
+        } else {
+            validationParagraph[i].innerHTML = "";
+        }
+    }
+    if (!isFormValid) { // if tracker is false, return value will be false
+        return false; // form will not submit
+
+    } else {
+        return true;
+    }
+    
 }
