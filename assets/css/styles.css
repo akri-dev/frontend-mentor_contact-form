@@ -49,3 +49,7 @@ body {
 .two-columns {
     display: inline-block;
 }
+
+.label-control {
+    display: block;
+}

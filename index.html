@@ -22,23 +22,23 @@
     <!-- return keyword, must be true to allow form submission if all fields are filled -->
     <form action="#" id="contact-form" name="contact_form" onsubmit="return validateForm()" novalidate>
       <div class="two-columns">
-        <label for="first-name">First Name <span class="required-asterisk">*</span></label>
+        <label class="label-control" for="first-name">First Name <span class="required-asterisk">*</span></label>
         <input type="text" id="first-name" name="first_name">
         <p class="validation-paragraph"></p>
       </div>
       <div class="two-columns">
-        <label for="last-name">Last Name <span class="required-asterisk">*</span></label>
+        <label class="label-control" for="last-name">Last Name <span class="required-asterisk">*</span></label>
         <input type="text" id="last-name" name="last_name">
         <p class="validation-paragraph"></p>
       </div>
       <div class="one-column">
-        <label for="email-address">Email Address <span class="required-asterisk">*</span></label>
+        <label class="label-control" for="email-address">Email Address <span class="required-asterisk">*</span></label>
         <input type="email" id="email-address" name="email_address">
         <p class="validation-paragraph"></p>
         <p id="validation-email"></p>
       </div>
       <div class="one-column">
-        <label>Query Type</label>
+        <label class="label-control">Query Type <span class="required-asterisk">*</span></label>
         <div class="two-columns">
           <input type="radio" name="query_type" id="general-inquiry">
           <label for="general-inquiry">General Inquiry</label>
@@ -51,7 +51,7 @@
         Please select a query type
       </div>
       <div class="one-column">
-        <label for="message-box">Message</label>
+        <label class="label-control"for="message-box">Message</label>
         <textarea name="message_box" id="message-box"></textarea>
         <p class="validation-paragraph"></p>
       </div>

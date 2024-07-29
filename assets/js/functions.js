@@ -14,14 +14,30 @@ function validateForm() {
     const form = document.forms["contact_form"];
     const validationParagraph = document.getElementsByClassName("validation-paragraph");
     const validationEmail = document.getElementById("validation-email");
+    const validationQuery = document.getElementsByName("query_type");
+
     const fieldsToValidate = ["first_name", "last_name", "email_address", "message_box"];
     const emailAddressToValidate = ["email_address"];
+    const queryToValidate = ["query_type"];
 
     let isFormValid = true; // Tracks overall form validity
     let isEmailFieldEmpty = true;
+    let isQueryRadioEmpty = true;
 
     for (let i = 0; i < fieldsToValidate.length; i++) {
         const fieldName = fieldsToValidate[i];
+        const fieldValue = form[fieldName].value.trim();
+        
+        if (fieldValue === "") {
+            validationParagraph[i].innerHTML = "This field is required";
+            isFormValid = false; //changes the tracker so that form will not submit
+        } else {
+            validationParagraph[i].innerHTML = "";
+        }
+    }
+
+    for (let i = 0; i < validationQuery[i].length; i++) {
+        const queryType = fieldsToValidate[i];
         const fieldValue = form[fieldName].value.trim();
         
         if (fieldValue === "") {
