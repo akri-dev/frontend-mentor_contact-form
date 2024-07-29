@@ -50,7 +50,11 @@ function validateForm() {
         validationQueryCounter++; //will run regardless if is true or false
     }
 
-    if (!isQueryRadioSelected) validationQuery.innerHTML = "Please select a query type";
+    if (!isQueryRadioSelected) {
+        validationQuery.innerHTML = "Please select a query type";
+    }else {
+        validationQuery.innerHTML = "";
+    }
 
     const emailValue = form[emailAddressToValidate].value.trim();
 
@@ -63,7 +67,6 @@ function validateForm() {
     //for arrays, include form element
     if (!form[emailAddressToValidate].value.includes('@')) { //if email address input !include @
         validationParagraph[2].innerHTML = "Please enter a valid email address"; 
-
     } else {
         if(!isEmailFieldEmpty) validationParagraph[2].innerHTML = "";
     }
@@ -75,4 +78,16 @@ function validateForm() {
         return true;
     }
     
+}
+
+function uncheckRadio() {
+    const radioButtons = document.getElementsByName("query_type");
+
+    for (var i = 0 ; i < radioButtons.length ; i++) {
+        if (radioButtons[i].checked == true) {
+            console.log(radioButtons[i].checked);
+            radioButtons[i].checked = false;
+            console.log(radioButtons[i].checked);
+        }
+    }
 }
