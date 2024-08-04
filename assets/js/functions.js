@@ -14,14 +14,12 @@ let isFormValid = true; // Tracks overall field form validity
 let isEmailFieldEmpty = true; // tracks if Email Field is Empty  (for validation if Email is right 
 let isQueryRadioSelected = false;
 
-// validate empty query
-var validationQueryCounter = 0
-
 function successMessage() {
 }
 
 function validateForm() {
-
+    // validate empty query
+    var validationQueryCounter = 0
 // TO MAKE CODE MUCH MORE FLUID, Validate on input change, only submit when Submit button clicked
 // refer to https://stackoverflow.com/questions/9537409/javascript-validate-on-input-change-only-submit-when-submit-button-clicked
 
@@ -49,14 +47,15 @@ function validateForm() {
     //while tracker is false AND Query Counter is 0 less than 2, then it's true
     while (!isQueryRadioSelected && validationQueryCounter < validationQueryRadio.length) {
         //if Radio for each is checked and all true, increase counter until false WHILE 
-        if (validationQueryRadio[validationQueryCounter].checked) isQueryRadioSelected = true;
+        if (validationQueryRadio[validationQueryCounter].checked) {
+            validationQuery.innerHTML = "";
+            isQueryRadioSelected = true;   
+        }         
+        if (!isQueryRadioSelected) {
+            validationQuery.innerHTML = "Please select a query type";
+        }
         validationQueryCounter++; //will run regardless if is true or false
-    }
 
-    if (!isQueryRadioSelected) {
-        validationQuery.innerHTML = "Please select a query type";
-    }else {
-        validationQuery.innerHTML = "";
     }
 
     const emailValue = form[emailAddressToValidate].value.trim();
@@ -85,6 +84,10 @@ function validateForm() {
 
     } else {
         return true;
+
+        var toastNotification = document.getElementById("toast-notification");
+        toastNotification.show = "show";
+        setTimeout(function(){toastNotification.className.replace("show","");}, 3000);
     }   
 }
 
@@ -118,4 +121,3 @@ function fieldSynchronousValidation(arrayValue) {
         validationParagraph[arrayValue].innerHTML = "";
     }
 }
-
