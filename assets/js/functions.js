@@ -41,6 +41,7 @@ function validateForm() {
             isFormValid = false; //changes the tracker so that form will not submit
         } else {
             validationParagraph[i].innerHTML = "";
+            isFormValid = true;
         }
     }
 
@@ -49,10 +50,13 @@ function validateForm() {
         //if Radio for each is checked and all true, increase counter until false WHILE 
         if (validationQueryRadio[validationQueryCounter].checked) {
             validationQuery.innerHTML = "";
-            isQueryRadioSelected = true;   
+            isQueryRadioSelected = true;
+            isFormValid = true;   
         }         
         if (!isQueryRadioSelected) {
             validationQuery.innerHTML = "Please select a query type";
+            isQueryRadioSelected = false;
+            isFormValid = false;
         }
         validationQueryCounter++; //will run regardless if is true or false
 
@@ -62,52 +66,59 @@ function validateForm() {
 
     if(emailValue === "") {
         isEmailFieldEmpty = true;
+        isFormValid = false;
     } else {
         isEmailFieldEmpty = false;
+        isFormValid = true;
     }
     
     //for arrays, include form element
-    if (!emailRegEx.test(form[emailAddressToValidate].value)) { //if email address input !include @
-        validationParagraph[2].innerHTML = "Please enter a valid email address"; 
+    if (emailValue === "") {
+        validationParagraph[2].innerHTML = "This field is required";
+        isFormValid = false;
+    }else if (!emailRegEx.test(form[emailAddressToValidate].value)) { //if email address input !include @
+        validationParagraph[2].innerHTML = "Please enter a valid email address";
+        isFormValid = false; 
     } else {
         if(!isEmailFieldEmpty) validationParagraph[2].innerHTML = "";
+        isFormValid = true;
     }
 
     if(!form[checkboxToValidate].checked) {
         validationParagraph[4].innerHTML = " To submit this form, please consent to being contacted";
+        isFormValid = false;
     } else {
         validationParagraph[4].innerHTML = "";
+        isFormValid = true;
     }
 
-    if (!isFormValid && !isQueryRadioSelected) { // if tracker is false, return value will be false
+    if (!isFormValid) { // if tracker is false, return value will be false
         return false; // form will not submit
 
     } else {
-        return true;
-
         var toastNotification = document.getElementById("toast-notification");
         toastNotification.show = "show";
         setTimeout(function(){toastNotification.className.replace("show","");}, 3000);
+        return true;
     }   
 }
 
-// function uncheckRadio() {
-//     const radioButtons = document.getElementsByName("query_type");
+function dynamicRadio() {
+    const radioButtons = document.getElementsByName("query_type");
 
-//     for (var i = 0 ; i < radioButtons.length ; i++) {
-//         if (radioButtons[i].checked == true) {
-//             console.log(radioButtons[i].checked);
-//             radioButtons[i].checked = false;
-//             console.log(radioButtons[i].checked);
-//         }
-//     }
-// }
+    for (var i = 0 ; i < radioButtons.length ; i++) {
+        if (radioButtons[i].checked === true) {
+            validationQuery.innerHTML = "";
+        }
+    }
+}
 
 function checkBox() {
     const checkBox = document.getElementById("consent-checkbox");
 
     if (!checkBox.checked === true) {
         validationParagraph[4].innerHTML = "To submit this form, please consent to being contacted";
+        isFormValid = false;
     } else {
         validationParagraph[4].innerHTML = "";
     }
@@ -115,9 +126,28 @@ function checkBox() {
 
 function fieldSynchronousValidation(arrayValue) {
     const fieldValue = form[fieldsToValidate[arrayValue]].value.trim();
-    if (fieldValue === "") {
-        validationParagraph[arrayValue].innerHTML = "This field is required";
-    } else {
-        validationParagraph[arrayValue].innerHTML = "";
+    if (arrayValue == 2) {
+        //for arrays, include form element
+        if (fieldValue === "") {
+            validationParagraph[arrayValue].innerHTML = "This field is required";
+            isFormValid = false;
+        }
+        else if (!emailRegEx.test(form[emailAddressToValidate].value)) { //if email address input !include @
+            validationParagraph[arrayValue].innerHTML = "Please enter a valid email address";
+            isFormValid = false;
+        } else {
+            if(!isEmailFieldEmpty) validationParagraph[arrayValue].innerHTML = "";
+        }
+    }
+
+    if (arrayValue != 2) {
+        if (fieldValue === "") {
+            validationParagraph[arrayValue].innerHTML = "This field is required";
+            isFormValid = false;
+        } else {
+            validationParagraph[arrayValue].innerHTML = "";
+        }
     }
 }
+
+

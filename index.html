@@ -41,11 +41,11 @@
       <div class="one-column">
         <label class="label-control">Query Type <span class="required-asterisk">*</span></label>
         <div class="two-columns">
-          <input type="radio" name="query_type" id="general-inquiry">
+          <input type="radio" name="query_type" id="general-inquiry" onclick="dynamicRadio()">
           <label for="general-inquiry">General Inquiry</label>
         </div>
         <div class="two-columns">
-          <input type="radio" name="query_type" id="support-request" onclick="">
+          <input type="radio" name="query_type" id="support-request" onclick="dynamicRadio()">
           <label for="support-request">Support Request</label>
         </div>
         <p id="validation-query-type"></p>
