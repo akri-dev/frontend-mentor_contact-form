@@ -92,12 +92,17 @@ function validateForm() {
         return false; // form will not submit
 
     } else {
-        var toastNotification = document.getElementById("toast-notification");
-        toastNotification.show = "show";
-        setTimeout(function(){toastNotification.className.replace("show","");}, 3000);
-        return true;
+        showToast();
     }   
 }
+
+function showToast() {
+    var toastNotification = document.getElementById("toast-notification");
+    toastNotification.classList.add("show"); // Correctly add the "show" class
+    setTimeout(function() {
+      toastNotification.classList.remove("show");
+    }, 3000);
+  }
 
 function dynamicRadio() {
     const radioButtons = document.getElementsByName("query_type");
