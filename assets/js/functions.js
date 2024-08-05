@@ -13,6 +13,7 @@ const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // for validating email, use te
 let isFormValid = true; // Tracks overall field form validity
 let isEmailFieldEmpty = true; // tracks if Email Field is Empty  (for validation if Email is right 
 let isQueryRadioSelected = false;
+let emailRegExValid = false; 
 
 function successMessage() {
 }
@@ -38,10 +39,8 @@ function validateForm() {
         
         if (fieldValue === "") {
             validationParagraph[i].innerHTML = "This field is required";
-            isFormValid = false; //changes the tracker so that form will not submit
-        } else {
+            } else {
             validationParagraph[i].innerHTML = "";
-            isFormValid = true;
         }
     }
 
@@ -50,13 +49,11 @@ function validateForm() {
         //if Radio for each is checked and all true, increase counter until false WHILE 
         if (validationQueryRadio[validationQueryCounter].checked) {
             validationQuery.innerHTML = "";
-            isQueryRadioSelected = true;
-            isFormValid = true;   
+            isQueryRadioSelected = true; 
         }         
         if (!isQueryRadioSelected) {
             validationQuery.innerHTML = "Please select a query type";
             isQueryRadioSelected = false;
-            isFormValid = false;
         }
         validationQueryCounter++; //will run regardless if is true or false
 
@@ -66,29 +63,28 @@ function validateForm() {
 
     if(emailValue === "") {
         isEmailFieldEmpty = true;
-        isFormValid = false;
     } else {
         isEmailFieldEmpty = false;
-        isFormValid = true;
     }
     
     //for arrays, include form element
     if (emailValue === "") {
         validationParagraph[2].innerHTML = "This field is required";
-        isFormValid = false;
     }else if (!emailRegEx.test(form[emailAddressToValidate].value)) { //if email address input !include @
         validationParagraph[2].innerHTML = "Please enter a valid email address";
-        isFormValid = false; 
     } else {
         if(!isEmailFieldEmpty) validationParagraph[2].innerHTML = "";
-        isFormValid = true;
     }
 
     if(!form[checkboxToValidate].checked) {
         validationParagraph[4].innerHTML = " To submit this form, please consent to being contacted";
-        isFormValid = false;
     } else {
         validationParagraph[4].innerHTML = "";
+    }
+
+    if (form[fieldsToValidate[0]].value == "" || form[fieldsToValidate[1]].value == "" || form[fieldsToValidate[2]].value == "" || form[fieldsToValidate[3]].value == "" || emailRegEx.test(form[emailAddressToValidate].value) == false || isEmailFieldEmpty == true || form[checkboxToValidate].checked == false || isQueryRadioSelected == false) {
+        isFormValid = false;
+    } else {
         isFormValid = true;
     }
 
@@ -118,7 +114,6 @@ function checkBox() {
 
     if (!checkBox.checked === true) {
         validationParagraph[4].innerHTML = "To submit this form, please consent to being contacted";
-        isFormValid = false;
     } else {
         validationParagraph[4].innerHTML = "";
     }
@@ -130,20 +125,18 @@ function fieldSynchronousValidation(arrayValue) {
         //for arrays, include form element
         if (fieldValue === "") {
             validationParagraph[arrayValue].innerHTML = "This field is required";
-            isFormValid = false;
         }
         else if (!emailRegEx.test(form[emailAddressToValidate].value)) { //if email address input !include @
             validationParagraph[arrayValue].innerHTML = "Please enter a valid email address";
-            isFormValid = false;
         } else {
             if(!isEmailFieldEmpty) validationParagraph[arrayValue].innerHTML = "";
+            emailRegExValid = true;
         }
     }
 
     if (arrayValue != 2) {
         if (fieldValue === "") {
             validationParagraph[arrayValue].innerHTML = "This field is required";
-            isFormValid = false;
         } else {
             validationParagraph[arrayValue].innerHTML = "";
         }
