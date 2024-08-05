@@ -92,6 +92,7 @@ function validateForm() {
         return false; // form will not submit
 
     } else {
+        document.getElementById("contact-form").reset();
         showToast();
     }   
 }
