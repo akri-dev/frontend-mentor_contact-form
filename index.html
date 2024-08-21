@@ -18,61 +18,62 @@
   </style>
 </head>
 <body>
-  <div class="container-card">
-    <h1>Contact Us</h1>
-    <!-- return keyword, must be true to allow form submission if all fields are filled -->
-    <!-- <form action="#" id="contact-form" name="contact_form" onsubmit="return validateForm()" novalidate> -->
-    <form action="" method="post" id="contact-form" name="contact_form" novalidate>
-      <div class="two-columns">
-        <label class="label-control" for="first-name">First Name <span class="required-asterisk">*</span></label>
-        <input type="text" id="first-name" name="first_name" onfocusout="fieldSynchronousValidation(0)">
-        <p class="validation-paragraph"></p>
-      </div>
-      <div class="two-columns">
-        <label class="label-control" for="last-name">Last Name <span class="required-asterisk">*</span></label>
-        <input type="text" id="last-name" name="last_name"
-        onfocusout="fieldSynchronousValidation(1)">
-        <p class="validation-paragraph"></p>
-      </div>
-      <div class="one-column">
-        <label class="label-control" for="email-address">Email Address <span class="required-asterisk">*</span></label>
-        <input type="email" id="email-address" name="email_address" onfocusout="fieldSynchronousValidation(2)">
-        <p class="validation-paragraph"></p>
-      </div>
-      <div class="one-column">
-        <span class="label-control">Query Type <span class="required-asterisk">*</span></span>
+  <div class="container">
+    <div class="container-card">
+      <h1>Contact Us</h1>
+      <!-- return keyword, must be true to allow form submission if all fields are filled -->
+      <!-- <form action="#" id="contact-form" name="contact_form" onsubmit="return validateForm()" novalidate> -->
+      <form action="" method="post" id="contact-form" name="contact_form" novalidate>
         <div class="two-columns">
-          <input type="radio" name="query_type" id="general-inquiry" onclick="dynamicRadio()">
-          <label for="general-inquiry">General Inquiry</label>
+          <label class="label-control" for="first-name">First Name <span class="required-asterisk">*</span></label>
+          <input type="text" id="first-name" name="first_name" onfocusout="fieldSynchronousValidation(0)">
+          <p class="validation-paragraph"></p>
         </div>
         <div class="two-columns">
-          <input type="radio" name="query_type" id="support-request" onclick="dynamicRadio()">
-          <label for="support-request">Support Request</label>
+          <label class="label-control" for="last-name">Last Name <span class="required-asterisk">*</span></label>
+          <input type="text" id="last-name" name="last_name"
+          onfocusout="fieldSynchronousValidation(1)">
+          <p class="validation-paragraph"></p>
         </div>
-        <p id="validation-query-type"></p>
-      </div>
-      <div class="one-column">
-        <label class="label-control"for="message-box">Message</label>
-        <textarea name="message_box" id="message-box" onfocusout="fieldSynchronousValidation(3)"></textarea>
-        <p class="validation-paragraph"></p>
-      </div>
-      <div class="one-column">
-        <input type="checkbox" id="consent-checkbox" name="consent_checkbox" onclick="checkBox()">
-        <label for="consent-checkbox">I consent to being contacted by the team</label>
-        <p class="validation-paragraph"></p>
-      </div>
-      <div class="one-column"><button type="button" onclick="validateForm()">Submit</button></div>
-    </form>
-  </div>
-
-  <div id="toast-notification">
-    <i class="fa-regular fa-circle-check"></i><strong>Message Sent!</strong>
-    <p>Thanks for completing the form. We'll be in touch soon!</p>
-  </div>
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+        <div class="one-column">
+          <label class="label-control" for="email-address">Email Address <span class="required-asterisk">*</span></label>
+          <input type="email" id="email-address" name="email_address" onfocusout="fieldSynchronousValidation(2)">
+          <p class="validation-paragraph"></p>
+        </div>
+        <div class="one-column">
+          <span class="label-control">Query Type <span class="required-asterisk">*</span></span>
+          <div class="two-columns">
+            <input type="radio" name="query_type" id="general-inquiry" onclick="dynamicRadio()">
+            <label for="general-inquiry">General Inquiry</label>
+          </div>
+          <div class="two-columns">
+            <input type="radio" name="query_type" id="support-request" onclick="dynamicRadio()">
+            <label for="support-request">Support Request</label>
+          </div>
+          <p id="validation-query-type"></p>
+        </div>
+        <div class="one-column">
+          <label class="label-control"for="message-box">Message</label>
+          <textarea name="message_box" id="message-box" onfocusout="fieldSynchronousValidation(3)"></textarea>
+          <p class="validation-paragraph"></p>
+        </div>
+        <div class="one-column">
+          <input type="checkbox" id="consent-checkbox" name="consent_checkbox" onclick="checkBox()">
+          <label for="consent-checkbox">I consent to being contacted by the team</label>
+          <p class="validation-paragraph"></p>
+        </div>
+        <div class="one-column"><button type="button" onclick="validateForm()">Submit</button></div>
+      </form>
+    </div>
+    <div id="toast-notification">
+      <i class="fa-regular fa-circle-check"></i><strong>Message Sent!</strong>
+      <p>Thanks for completing the form. We'll be in touch soon!</p>
+    </div>
+    
+    <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Your Name Here</a>.
+    </div>
   </div>
   <div class="toast-notif" id="toast-notif"></div>
   <script src="./assets/js/functions.js"></script>
