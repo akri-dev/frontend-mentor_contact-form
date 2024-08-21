@@ -40,15 +40,17 @@
           <input type="email" id="email-address" name="email_address" onfocusout="fieldSynchronousValidation(2)">
           <p class="validation-paragraph"></p>
         </div>
-        <div class="one-column">
+        <div class="one-column"">
           <span class="label-control">Query Type <span class="required-asterisk">*</span></span>
-          <div class="two-columns">
-            <input type="radio" name="query_type" id="general-inquiry" onclick="dynamicRadio()">
-            <label for="general-inquiry">General Inquiry</label>
-          </div>
-          <div class="two-columns">
-            <input type="radio" name="query_type" id="support-request" onclick="dynamicRadio()">
-            <label for="support-request">Support Request</label>
+          <div id="query-types">
+            <div class="two-columns query-types">
+              <input type="radio" name="query_type" id="general-inquiry" onclick="dynamicRadio()">
+              <label for="general-inquiry">General Inquiry</label>
+            </div>
+            <div class="two-columns query-types">
+              <input type="radio" name="query_type" id="support-request" onclick="dynamicRadio()">
+              <label for="support-request">Support Request</label>
+            </div>
           </div>
           <p id="validation-query-type"></p>
         </div>
@@ -57,9 +59,9 @@
           <textarea name="message_box" id="message-box" onfocusout="fieldSynchronousValidation(3)"></textarea>
           <p class="validation-paragraph"></p>
         </div>
-        <div class="one-column">
+        <div class="one-column" id="checkbox-flex">
           <input type="checkbox" id="consent-checkbox" name="consent_checkbox" onclick="checkBox()">
-          <label for="consent-checkbox">I consent to being contacted by the team</label>
+          <label for="consent-checkbox" id="consent-text">I consent to being contacted by the team<span class="required-asterisk">*</span></label>
           <p class="validation-paragraph"></p>
         </div>
         <div class="one-column"><button type="button" onclick="validateForm()">Submit</button></div>
