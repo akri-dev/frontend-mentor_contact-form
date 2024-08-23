@@ -16,7 +16,7 @@ let isEmailFieldEmpty = true; // tracks if Email Field is Empty  (for validation
 let isQueryRadioSelected = false;
 let emailRegExValid = false; 
 let errorColorValidation = 'border: 1px solid hsl(0, 66%, 54%);';
-let validColorValidation = '1px solid hsl(169, 82%, 27%);';
+let validColorValidation = 'border: 1px solid hsl(186, 15%, 59%);';
 
 function successMessage() {
 }
@@ -24,6 +24,7 @@ function successMessage() {
 
 
 function validateForm() {
+    // document.getElementById('submit-button').innerHTML.style = 'background-color: '
     // validate empty query
     var validationQueryCounter = 0
 // TO MAKE CODE MUCH MORE FLUID, Validate on input change, only submit when Submit button clicked
@@ -74,7 +75,6 @@ function validateForm() {
     const emailValue = form[emailAddressToValidate].value;
     //for arrays, include form element
     if (emailValue === "") {
-        console.log('should be empty');
         validationParagraph[2].innerHTML = "Please enter a valid email address";
         textBoxes[2].style = errorColorValidation;
         textAreaBox[0].style = errorColorValidation;
@@ -170,16 +170,25 @@ function fieldSynchronousValidation(arrayValue) {
         if (fieldValue === "") {
             validationParagraph[arrayValue].innerHTML = "This field is required";
             textBoxes[arrayValue].style = errorColorValidation;
-            textAreaBox[0].style = errorColorValidation;
+            if (arrayValue == 3) textAreaBox[0].style = errorColorValidation;
         } else {
             validationParagraph[arrayValue].innerHTML = "";
             textBoxes[arrayValue].style = validColorValidation;
-            textAreaBox[0].style = validColorValidation;
+            if (arrayValue == 3) textAreaBox[0].style = validColorValidation;
         }
     }
 }
 
 function selectRadio(radioId) {
     document.getElementById(radioId).checked = true;
+    const queryTypeDiv = document.getElementsByClassName('query-types');
+    if (radioId == 'general-inquiry') {
+        queryTypeDiv[0].style = 'border: 1px solid hsl(169, 82%, 27%)';
+        queryTypeDiv[1].style = 'border: 1px solid hsl(186, 15%, 59%)';
+    } else {
+        queryTypeDiv[1].style = 'border: 1px solid hsl(169, 82%, 27%)';
+        queryTypeDiv[0].style = 'border: 1px solid hsl(186, 15%, 59%)';
+    }
+    
     dynamicRadio(); 
   }

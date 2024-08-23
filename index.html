@@ -27,30 +27,33 @@
         <div class="full-name">
           <div class="two-columns">
             <label class="label-control" for="first-name">First Name <span class="required-asterisk">*</span></label>
-            <input type="text" id="first-name" name="first_name" onfocusout="fieldSynchronousValidation(0)">
+            <input type="text" id="first-name" name="first_name" onfocusout="fieldSynchronousValidation(0)" onfocusin="style='border: 1px solid hsl(169, 82%, 27%);'" onchange="fieldSynchronousValidation(0)" onmouseover="style='border: 1px solid hsl(169, 82%, 27%);'" onmouseout="style='border: 1px solid hsl(186, 15%, 59%);'">
             <p class="validation-paragraph"></p>
           </div>
           <div class="two-columns">
             <label class="label-control" for="last-name">Last Name <span class="required-asterisk">*</span></label>
             <input type="text" id="last-name" name="last_name"
-            onfocusout="fieldSynchronousValidation(1)">
+            onfocusout="fieldSynchronousValidation(1)"
+            onfocusin="style='border: 1px solid hsl(169, 82%, 27%);'" onchange="fieldSynchronousValidation(1)" onmouseover="style='border: 1px solid hsl(169, 82%, 27%);'" onmouseout="style='border: 1px solid hsl(186, 15%, 59%);'">
             <p class="validation-paragraph"></p>
           </div>
         </div>
         <div class="one-column">
           <label class="label-control" for="email-address">Email Address <span class="required-asterisk">*</span></label>
-          <input type="email" id="email-address" name="email_address" onfocusout="fieldSynchronousValidation(2)">
+          <input type="email" id="email-address" name="email_address" onfocusout="fieldSynchronousValidation(2)"
+          onfocusin="style='border: 1px solid hsl(169, 82%, 27%);'"
+          onchange="fieldSynchronousValidation(2)" onmouseover="style='border: 1px solid hsl(169, 82%, 27%);'" onmouseout="style='border: 1px solid hsl(186, 15%, 59%);'">
           <p class="validation-paragraph"></p>
         </div>
         <div class="one-column">
           <span class="label-control" id="query-label">Query Type <span class="required-asterisk">*</span></span>
           <div id="query-types">
             <div class="two-columns query-types" onclick="selectRadio('general-inquiry')">
-              <input type="radio" name="query_type" id="general-inquiry" onclick="dynamicRadio()">
+              <input type="radio" name="query_type" id="general-inquiry" onclick="dynamicRadio()" onmouseover="style='border: 1px solid hsl(169, 82%, 27%);'" onmouseout="style='border: 1px solid hsl(186, 15%, 59%);'">
               <label for="general-inquiry">General Inquiry</label>
             </div>
             <div class="two-columns query-types" onclick="selectRadio('support-request')">
-              <input type="radio" name="query_type" id="support-request" onclick="dynamicRadio()">
+              <input type="radio" name="query_type" id="support-request" onclick="dynamicRadio()" onmouseover="style='border: 1px solid hsl(169, 82%, 27%);'" onmouseout="style='border: 1px solid hsl(186, 15%, 59%);'">
               <label for="support-request">Support Request</label>
             </div>
           </div>
@@ -58,16 +61,16 @@
         </div>
         <div class="one-column">
           <label class="label-control"for="message-box">Message <span class="required-asterisk">*</span></label>
-          <textarea name="message_box" id="message-box" onfocusout="fieldSynchronousValidation(3)"></textarea>
+          <textarea name="message_box" id="message-box" onfocusout="fieldSynchronousValidation(3)" onfocusin="style='border: 1px solid hsl(169, 82%, 27%);'" onmouseover="style='border: 1px solid hsl(169, 82%, 27%);'" onmouseout="style='border: 1px solid hsl(186, 15%, 59%);'"></textarea>
           <p class="validation-paragraph"></p>
         </div>
         <div class="one-column" id="checkbox-flex">
-          <input type="checkbox" id="consent-checkbox" name="consent_checkbox" onclick="checkBox()">
+          <input type="checkbox" id="consent-checkbox" name="consent_checkbox" onclick="checkBox()" onmouseover="style='border: 1px solid hsl(169, 82%, 27%);'" onmouseout="style='border: 1px solid hsl(186, 15%, 59%);'">
           <label for="consent-checkbox" id="consent-text">I consent to being contacted by the team <span class="required-asterisk">*</span></label>
           
         </div>
         <p class="validation-paragraph"></p>
-        <div class="one-column"><button type="button" onclick="validateForm()">Submit</button></div>
+        <div class="one-column"><button type="button" onclick="validateForm()" id="submit-button" onmouseover="style='background-color: #063F36;'" onmouseout="style='background-color: hsl(169, 82%, 27%);'">Submit</button></div>
       </form>
     </div>
     <div id="toast-notification">
