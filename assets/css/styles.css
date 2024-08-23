@@ -71,24 +71,19 @@ textarea {
   font-size: 14px;
 }
 
-
-
 /* Toast Notification */
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #toast-notification {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 250px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: #333; /* Black background color */
-  color: #fff; /* White text color */
-  text-align: center; /* Centered text */
-  border-radius: 2px; /* Rounded borders */
-  padding: 16px; /* Padding */
+  background-color: #063F36; /* Black background color */
+  color: hsl(0, 0%, 100%); /* White text color */
+  border-radius: 10px; /* Rounded borders */
+  padding: 1.5rem 2rem; /* Padding */
   position: fixed; /* Sit on top of the screen */
   z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  bottom: 30px; /* 30px from the bottom */
+  top: 20px;
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
@@ -100,25 +95,34 @@ textarea {
   animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
+i {
+  margin-right: .5rem;
+}
+
+
+#toast-notification p {
+  margin-top: 1rem;
+}
+
 /* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  from {top: 0; opacity: 0;}
+  to {top: 20px; opacity: 1;}
 }
 
 @keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  from {top: 0; opacity: 0;}
+  to {top: 20px; opacity: 1;}
 }
 
 @-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+  from {top: 20px; opacity: 1;}
+  to {top: 0; opacity: 0;}
 }
 
 @keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+  from {top: 20px; opacity: 1;}
+  to {top: 0; opacity: 0;}
 }
 
 .container {
