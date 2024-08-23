@@ -35,6 +35,7 @@ h3,
 p {
     margin: 0;
     padding: 0;
+    user-select: none;
 }
 
 * {
@@ -143,6 +144,7 @@ i {
 
 .label-control {
   font-size: 16px !important;
+  user-select: none;
 }
 
 .full-name, .one-column {
@@ -424,5 +426,14 @@ button:active {
 
   textarea {
     height: 200px
+  }
+
+  #toast-notification {
+    padding: 1rem 1rem; /* Padding */
+    width: 250px;
+  }
+  
+  #toast-notification p {
+    font-size: .8rem;
   }
 }
