@@ -143,6 +143,7 @@ textarea {
 
 .full-name, .one-column {
   margin-top: 1rem;
+  max-width: 100%;
 }
 
 #query-label {
@@ -336,10 +337,11 @@ button:active {
 @media only screen and (max-width: 480px) {
   .container {
     margin-top: 4rem;
-    min-width: 320px
+    min-width: 320px;
   }
   .container-card {
     padding: 1.5rem 1.75rem;
+    max-width: 85%;
   }
   .label-control,
   .label-control span{
@@ -417,6 +419,6 @@ button:active {
   }
 
   textarea {
-    height: 200px;
+    height: 200px
   }
 }
