@@ -8,15 +8,20 @@ const emailAddressToValidate = ["email_address"];
 const checkboxToValidate = ["consent_checkbox"];
 const validationQueryRadio = document.getElementsByName("query_type");
 const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // for validating email, use test()
-
+const textBoxes = document.getElementsByTagName('input');
+const textAreaBox = document.getElementsByTagName('textarea');
 
 let isFormValid = true; // Tracks overall field form validity
 let isEmailFieldEmpty = true; // tracks if Email Field is Empty  (for validation if Email is right 
 let isQueryRadioSelected = false;
 let emailRegExValid = false; 
+let errorColorValidation = 'border: 1px solid hsl(0, 66%, 54%);';
+let validColorValidation = '1px solid hsl(169, 82%, 27%);';
 
 function successMessage() {
 }
+
+
 
 function validateForm() {
     // validate empty query
@@ -32,16 +37,24 @@ function validateForm() {
     //       } // loop when need to work on multiple arrays with the same data value   
     // }
 
-    //validates 4 field empty
+    //validates 4 field empty when submitting
     for (let i = 0; i < fieldsToValidate.length; i++) { 
         const fieldName = fieldsToValidate[i];
         const fieldValue = form[fieldName].value.trim();
-        
         if (fieldValue === "") {
-            validationParagraph[i].innerHTML = "This field is required";
+            if (i == 2) {
+                validationParagraph[i].innerHTML = "Please enter a valid email address";
             } else {
+                validationParagraph[i].innerHTML = "This field is required";
+            }
+            textAreaBox[0].style = errorColorValidation;
+            textBoxes[i].style = errorColorValidation;
+        } else {
             validationParagraph[i].innerHTML = "";
+            textBoxes[i].style = validColorValidation;
+            textAreaBox[0].style = validColorValidation;
         }
+        
     }
 
     //while tracker is false AND Query Counter is 0 less than 2, then it's true
@@ -58,22 +71,25 @@ function validateForm() {
         validationQueryCounter++; //will run regardless if is true or false
 
     }
-
-    const emailValue = form[emailAddressToValidate].value.trim();
-
-    if(emailValue === "") {
-        isEmailFieldEmpty = true;
-    } else {
-        isEmailFieldEmpty = false;
-    }
-    
+    const emailValue = form[emailAddressToValidate].value;
     //for arrays, include form element
     if (emailValue === "") {
-        validationParagraph[2].innerHTML = "This field is required";
+        console.log('should be empty');
+        validationParagraph[2].innerHTML = "Please enter a valid email address";
+        textBoxes[2].style = errorColorValidation;
+        textAreaBox[0].style = errorColorValidation;
+        isEmailFieldEmpty = true;
     }else if (!emailRegEx.test(form[emailAddressToValidate].value)) { //if email address input !include @
         validationParagraph[2].innerHTML = "Please enter a valid email address";
+        isEmailFieldEmpty = false;
     } else {
-        if(!isEmailFieldEmpty) validationParagraph[2].innerHTML = "";
+        isEmailFieldEmpty = false;
+        if(!isEmailFieldEmpty){
+            validationParagraph[2].innerHTML = "";
+            textAreaBox[0].style = validColorValidation;
+            textBoxes[2].style = validColorValidation;
+        }
+        
     }
 
     if(!form[checkboxToValidate].checked) {
@@ -130,12 +146,22 @@ function fieldSynchronousValidation(arrayValue) {
     if (arrayValue == 2) {
         //for arrays, include form element
         if (fieldValue === "") {
-            validationParagraph[arrayValue].innerHTML = "This field is required";
+            validationParagraph[arrayValue].innerHTML = "Please enter a valid email address";
+            textBoxes[arrayValue].style = errorColorValidation;
+            isEmailFieldEmpty = true;
         }
         else if (!emailRegEx.test(form[emailAddressToValidate].value)) { //if email address input !include @
             validationParagraph[arrayValue].innerHTML = "Please enter a valid email address";
-        } else {
-            if(!isEmailFieldEmpty) validationParagraph[arrayValue].innerHTML = "";
+            textBoxes[arrayValue].style = errorColorValidation;
+            textAreaBox[0].style = errorColorValidation;
+            isEmailFieldEmpty = false;
+        } else { // point to change {delete when done}
+            isEmailFieldEmpty = false;
+            if(!isEmailFieldEmpty) {
+                validationParagraph[arrayValue].innerHTML = "";
+                textBoxes[arrayValue].style = validColorValidation;
+                textAreaBox[0].style = validColorValidation;
+            }
             emailRegExValid = true;
         }
     }
@@ -143,10 +169,17 @@ function fieldSynchronousValidation(arrayValue) {
     if (arrayValue != 2) {
         if (fieldValue === "") {
             validationParagraph[arrayValue].innerHTML = "This field is required";
+            textBoxes[arrayValue].style = errorColorValidation;
+            textAreaBox[0].style = errorColorValidation;
         } else {
             validationParagraph[arrayValue].innerHTML = "";
+            textBoxes[arrayValue].style = validColorValidation;
+            textAreaBox[0].style = validColorValidation;
         }
     }
 }
 
-
+function selectRadio(radioId) {
+    document.getElementById(radioId).checked = true;
+    dynamicRadio(); 
+  }
