@@ -437,3 +437,19 @@ button:active {
     font-size: .8rem;
   }
 }
+
+@media (hover: hover) { /* Targets devices with hover capability (typically desktops) */
+  form *:not(button[type="submit"]) { 
+    pointer-events: none; /* Makes elements unclickable */
+  }
+}
+
+input[type="checkbox"]:focus + label{
+  /* Styles for the label when the checkbox is focused */
+  outline: 1px solid hsl(169, 82%, 27%); /* Example: add a blue outline */
+}
+
+input[type='radio']:focus + label{
+  /* Styles for the label when the checkbox is focused */
+  outline: 1px solid hsl(169, 82%, 27%); /* Example: add a blue outline */
+}
