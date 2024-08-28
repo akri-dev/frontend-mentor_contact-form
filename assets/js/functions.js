@@ -18,11 +18,6 @@ let emailRegExValid = false;
 let errorColorValidation = 'border: 1px solid hsl(0, 66%, 54%);';
 let validColorValidation = 'border: 1px solid hsl(186, 15%, 59%);';
 
-function successMessage() {
-}
-
-
-
 function validateForm() {
     // document.getElementById('submit-button').innerHTML.style = 'background-color: '
     // validate empty query
