@@ -32,7 +32,9 @@ Users should be able to:
 
 ### Screenshot
 
-![](./assets/images/screenshot.jpg)
+![Desktop View](./assets/images/screenshot-desktop.jpg)
+![Mobile View](./assets/images/screenshot-mobile.jpg)
+
 
 ### Links
 
